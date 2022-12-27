@@ -39,7 +39,7 @@ class App extends Component {
 
     checkUser
       ? alert(`${name} is already in the contacts`)
-      : this.setState(() => ({
+      : this.setState((prevState) => ({
           contacts: [newContact, ...contacts],
         }));
   };
@@ -52,7 +52,7 @@ class App extends Component {
     );
   };
 
-  componentDidUpdate(prevState) {
+  componentDidUpdate(prevProps,prevState) {
     if (this.state.contacts !== prevState.contacts) {
       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
     };
